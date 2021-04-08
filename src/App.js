@@ -1,8 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+
+import Layout from './components/Layout';
+
+import GlobalStyles from './styles/GlobalStyles';
 
 function App() {
-  return ;
+  return (
+    <div>
+      <GlobalStyles/>
+      <Layout />
+    </div>
+  );
 }
 
 export default App;
