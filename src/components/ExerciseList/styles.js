@@ -6,6 +6,14 @@ export const Board = styled.div`
   margin: auto;
   margin-top: 15px;
   box-sizing: border-box;
+  border: 1px solid gray;
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 
   
   
@@ -19,6 +27,7 @@ export const Board = styled.div`
   }
 
   th {
+    width: 2em;
     height: 30px;
   }
 
