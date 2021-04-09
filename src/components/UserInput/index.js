@@ -14,21 +14,21 @@ class UserInput extends Component {
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.notInFuture = this.notInFuture.bind(this);
   }
 
   notInFuture(date) {
     const dateArray = date.split('-');
-    console.log(dateArray);
     const today = new Date();
-    if (today.getFullYear < parseInt(dateArray[0])) {
+    if (today.getFullYear() < parseInt(dateArray[0])) {
       return false;
     }
 
-    if (today.getMonth < parseInt(dateArray[1])) {
+    if (today.getMonth()+1 < parseInt(dateArray[1])) {
       return false;
     }
 
-    if (today.getDate < parseInt(dateArray[2])) {
+    if (today.getDate() < parseInt(dateArray[2])) {
       return false;
     }
 
