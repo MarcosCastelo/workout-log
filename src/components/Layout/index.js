@@ -16,13 +16,24 @@ class Layout extends Component {
 
     this.handleInput = this.handleInput.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
+    this.getTotalTime = this.getTotalTime.bind(this);
+  }
+
+  getTotalTime() {
+    if (this.state.list.length > 0) {
+      return this.state.list.reduce((a, c) => {
+        return a + c.time;
+      }, 0);
+    }
+
+    return 0;
   }
 
   deleteItem(key) {
-    console.log('item');
     var filteredItems = this.state.list.filter(function (item) {
-      return (item.key !== key);
+      return (item.id !== key);
     })
+    console.log(filteredItems);
 
     this.setState({
       list:filteredItems
@@ -59,6 +70,7 @@ class Layout extends Component {
           entries={this.state.list} 
           deleteItem={this.deleteItem}
         />
+        <h1> {this.getTotalTime()} hours of exercise </h1>
       </Container>
     );
   }
