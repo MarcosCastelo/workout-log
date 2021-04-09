@@ -17,15 +17,20 @@ class UserInput extends Component {
   }
 
   handleSubmit(e) {
-    var newExercise = {
-      key: Date.now(),
-      time: this._inputTime.value,
-      exercise: this._inputExercise.value,
-      date: this._inputDate.value
+    if (
+      this._inputTime.value &&
+      this._inputExercise.value &&
+      this._inputDate.value
+    ) {
+      var newExercise = {
+        key: Date.now(),
+        time: this._inputTime.value,
+        exercise: this._inputExercise.value,
+        date: this._inputDate.value
+      }
+      this.props.handleInput(newExercise);
+      console.log(newExercise);
     }
-
-    this.props.handleInput(newExercise);
-    console.log(newExercise);
     e.preventDefault();
   }
 
@@ -42,7 +47,7 @@ class UserInput extends Component {
             />
             <select name="exercise" ref={(a) => this._inputExercise = a}>
               {this.state.exercisesTypes.map((value) =>
-                <option value={ value }>{ value }</option>
+                <option value={value}>{value}</option>
               )}
             </select>
             <input
