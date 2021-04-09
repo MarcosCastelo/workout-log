@@ -16,20 +16,39 @@ class UserInput extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  notInFuture(date) {
+    const dateArray = date.split('-');
+    console.log(dateArray);
+    const today = new Date();
+    if (today.getFullYear < parseInt(dateArray[0])) {
+      return false;
+    }
+
+    if (today.getMonth < parseInt(dateArray[1])) {
+      return false;
+    }
+
+    if (today.getDate < parseInt(dateArray[2])) {
+      return false;
+    }
+
+    return true;
+  }
+
   handleSubmit(e) {
     if (
-      this._inputTime.value &&
+      this._inputTime.value > 0 &&
       this._inputExercise.value &&
-      this._inputDate.value
+      this._inputDate.value &&
+      this.notInFuture(this._inputDate.value)
     ) {
       var newExercise = {
-        key: Date.now(),
-        time: this._inputTime.value,
+        id: Date.now(),
+        time: parseInt(this._inputTime.value),
         exercise: this._inputExercise.value,
         date: this._inputDate.value
       }
       this.props.handleInput(newExercise);
-      console.log(newExercise);
     }
     e.preventDefault();
   }
@@ -43,6 +62,8 @@ class UserInput extends Component {
             <input
               type="number"
               placeholder="Time Spent"
+              min="1"
+              max="24"
               ref={(a) => this._inputTime = a}
             />
             <select name="exercise" ref={(a) => this._inputExercise = a}>
