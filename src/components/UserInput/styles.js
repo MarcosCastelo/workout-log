@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-// BNR - Banner
-
 export const InputField = styled.div`
   width: 600px;
   margin: auto;
