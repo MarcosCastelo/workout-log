@@ -10,7 +10,7 @@ export const InputField = styled.div`
   }
 
   input, select  {
-    width: 120px;
+    width: 130px;
     height: 35px;
     margin: 0 5px;
   }
